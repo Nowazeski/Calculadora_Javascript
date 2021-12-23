@@ -1,0 +1,65 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+.container-2{
+    background-color: rgba(33, 33, 33, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+
+}
+table tr td button{
+    cursor: pointer;
+    font-size: 15px;
+    width: 52px;
+    height: 52px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+table tr td button:hover{
+    background-color: rgb(33, 192, 73);
+}
+header{
+    grid-area: header;
+    background-color: blue;
+}
+main{
+    grid-area: main;
+    background-color: limegreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+main p{
+    background-color: white;
+    padding: 15px;
+    margin: 5px 0px 8px 0px;
+    width: 190px;
+}
+main h3{
+    text-align: center;
+    font-size: 25px;
+    color: white;
+}
+aside{
+    grid-area: aside;
+    background-color: red;
+}
+footer{
+    grid-area: footer;
+    background-color: black;
+}
+.container{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 10vh 80vh 10vh;
+    grid-template-areas: "header header"
+                         "main aside"
+                         "footer footer";
+}
+#btIgual{
+    height:110px;
+}
+#btZero{
+    width: 110px;
+}
