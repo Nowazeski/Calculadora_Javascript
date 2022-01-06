@@ -8,20 +8,43 @@
     border-radius: 10px;
 
 }
+.container-2 p {
+    text-align: end;
+}
+header nav ul li {
+    display: inline-block;
+    background-color: rgb(71, 83, 255);
+    padding: 15px;
+    border-radius: 10px 0px 5px 0px;
+    /* box-shadow: 0px 0px 5px 10px cyan; */
+    cursor:pointer;
+    margin-left: 10px;
+}
+header nav ul li a{
+    color: white;
+    text-decoration: none;
+}
+header nav ul li:hover{
+    background-color: black;
+}
 table tr td button{
     cursor: pointer;
-    font-size: 15px;
+    font-size: 25px;
     width: 52px;
     height: 52px;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
+    font-weight: bold;
 }
 table tr td button:hover{
-    background-color: rgb(33, 192, 73);
+    background-color: rgb(20, 195, 248);
+    color:white;
 }
 header{
     grid-area: header;
     background-color: blue;
+    display: flex;
+    align-items: center;
 }
 main{
     grid-area: main;
@@ -35,6 +58,15 @@ main p{
     padding: 15px;
     margin: 5px 0px 8px 0px;
     width: 190px;
+    color:black;
+    height: 10px;
+    border-radius: 5px;
+
+    max-width: 25ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 18px;
 }
 main h3{
     text-align: center;
@@ -59,7 +91,41 @@ footer{
 }
 #btIgual{
     height:110px;
+    background-color: rgb(8, 189, 8);
+    font-size: 30px;
 }
-#btZero{
+#btIgual:hover{
+    background-color: rgb(87, 253, 87);
+}
+#bt0{
     width: 110px;
+}
+#btLimpar{
+    background-color: rgb(220, 20, 20);
+    font-size: 20px;
+}
+#btLimpar:hover{
+    background-color: rgb(255, 0, 0);
+}
+aside input{
+    outline: none;
+    width: 90%;
+}
+aside button{
+    margin: 50% 0px;
+    font-size: 50px;
+    width: 100%;
+    cursor: pointer;
+}
+aside button a{
+    text-decoration: none;
+    color:black;
+    font: bold;
+}
+footer { 
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
