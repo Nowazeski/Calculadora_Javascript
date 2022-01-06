@@ -1,168 +1,164 @@
-class controller {
-    constructor() {
+class controller{
 
+
+    constructor(){
         this.initialize();
     }
+    initialize(){
 
-    initialize() {
+        var valor = "0";
+        var numValor;
+        var novoNumero = true;
+        var sinal;
 
-        var btIgualEl = document.querySelector('#btIgual');
-        btIgualEl.addEventListener('click', igual);
+        // Onload Inicia No carregamento da Pagina e inicia Referencias ao ID;
+
+        onload = () =>{
+
+            document.querySelector('#bt0').onclick = ()=> digito(0);
+            document.querySelector('#bt1').onclick = ()=> digito(1);
+            document.querySelector('#bt2').onclick = ()=> digito(2);
+            document.querySelector('#bt3').onclick = ()=> digito(3);
+            document.querySelector('#bt4').onclick = ()=> digito(4);
+            document.querySelector('#bt5').onclick = ()=> digito(5);
+            document.querySelector('#bt6').onclick = ()=> digito(6);
+            document.querySelector('#bt7').onclick = ()=> digito(7);
+            document.querySelector('#bt8').onclick = ()=> digito(8);
+            document.querySelector('#bt9').onclick = ()=> digito(9);
+
+            document.querySelector('#btLimpar').onclick = () => limpar();
+            document.querySelector('#btApagar').onclick = () => apagar();
+
+            document.querySelector("#btMais").onclick = () => mais();
+            document.querySelector('#btMenos').onclick = () => menos();
+            document.querySelector('#btDividir').onclick = () => dividir();
+            document.querySelector('#btVezes').onclick = () => vezes();
+
+            document.querySelector('#btIgual').onclick = () => igual();
+
+            atualizaDisplay();
+
+        };
+
+        // Insere Os Numeros No display;
+
+        const digito = (n) =>{
+
+            if(novoNumero){
+                valor = "" + n;
+                novoNumero = false;
+                atualizaDisplay();
+            }else{
+
+                valor += n;
+                atualizaDisplay();
+            }
+        };
+
+        // Atualizar O Display;
+
+        const atualizaDisplay = ()=>{
+
+            document.querySelector('#display').innerText = valor;
+        };
+
+        const limpar = () => {
+
+            valor = "0";
+            atualizaDisplay();
+            valor = "";
+
+        };
+
+        const apagar = () => {
+
+            if(valor > 0){
+
+                valor = valor.substring(0,valor.length-1);
+                atualizaDisplay();
+                
+            }else{
+                valor = "0";
+                atualizaDisplay();
+                valor = "";
+            }
+        };
+
 
         // Operadores Aritméticos
 
-        var btMaisEl = document.querySelector('#btMais');
-        btMaisEl.addEventListener('click', insertMais);
+        const mais = () =>{
+            sinal = 'mais';
+            numValor = valor;
+            valor = "0";
+            atualizaDisplay();
+            valor = "";
+        };
+        const menos = () =>{
+            sinal = 'menos';
+            numValor = valor;
+            valor = "0";
+            atualizaDisplay();
+            valor = "";
+           
+        };
+        const vezes = () =>{
+            sinal = 'vezes';
+            numValor = valor;
+            valor = "0";
+            atualizaDisplay();
+            valor = "";
+           
+        };
 
-        var btMenosEl = document.querySelector('#btMenos');
-        btMenosEl.addEventListener('click', insertMenos);
+        const dividir = () =>{
+            sinal = 'dividir';
+            numValor = valor;
+            valor = "0";
+            atualizaDisplay();
+            valor = "";
+          
+        };
 
-        var btDividirEl = document.querySelector('#btDividir');
-        btDividirEl.addEventListener('click', insertDividir);
+        const igual = () =>{
 
-        var btVezesEl = document.querySelector('#btVezes');
-        btVezesEl.addEventListener('click', insertVezes);
+            
+            
+            switch (sinal){
 
-        // Botão Apagar Ponto e Limpar
+                case 'mais':
+                var operacao = parseInt(numValor) + parseInt(valor); 
+                valor = operacao;
+                atualizaDisplay();
+                break;
 
-        var btLimparEl = document.querySelector("#btLimpar");
-        btLimparEl.addEventListener('click', limpar);
+                case 'menos':
+                var operacao =  parseInt(numValor) - parseInt(valor);
+                valor = operacao;
+                atualizaDisplay();
+                break;
 
-        var btApagarEl = document.querySelector("#btApagar");
-        btApagarEl.addEventListener('click', apagar);
+                case 'dividir':
+                var operacao = parseInt(numValor) / parseInt(valor); 
+                valor = operacao;
+                atualizaDisplay();
+                break;
 
-        var btPontoEl = document.querySelector("#btPonto");
-        btPontoEl.addEventListener('click', insertPonto);
+                case 'vezes':
+                var operacao = parseInt(valor) * parseInt(numValor);
+                valor = operacao;
+                atualizaDisplay();
+                break;
 
-        var valor1;
-        var valor2;
-        var sinal;
+                default:
+                valor = "0";
+                atualizaDisplay();
+                valor = "";
+            }
 
-        // Teclas Numéricas
-
-        var numeroEl = document.querySelector('#tecla-0');
-        numeroEl.addEventListener('click', insert);
-        var numeroEl1 = document.querySelector('#tecla-1');
-        numeroEl1.addEventListener('click', insert1);
-        var numeroEl2 = document.querySelector('#tecla-2');
-        numeroEl2.addEventListener('click', insert2);
-        var numeroEl3 = document.querySelector('#tecla-3');
-        numeroEl3.addEventListener('click', insert3);
-        var numeroEl4 = document.querySelector('#tecla-4');
-        numeroEl4.addEventListener('click', insert4);
-        var numeroEl5 = document.querySelector('#tecla-5');
-        numeroEl5.addEventListener('click', insert5);
-        var numeroEl6 = document.querySelector('#tecla-6');
-        numeroEl6.addEventListener('click', insert6);
-        var numeroEl7 = document.querySelector('#tecla-7');
-        numeroEl7.addEventListener('click', insert7);
-        var numeroEl8 = document.querySelector('#tecla-8');
-        numeroEl8.addEventListener('click', insert8);
-        var numeroEl9 = document.querySelector('#tecla-9');
-        numeroEl9.addEventListener('click', insert9);
-
-
-
-
-        // FUNCTION IGUAL
-
-        function igual() {
-
-            var displayEl = document.querySelector('#display');
-
-
-
-            displayEl.textContent = "";
-        }
-
-        // FUNCTION DO LIMPAR, APAGAR E PONTO
-
-        function limpar() {
-            var displayEl = document.querySelector("#display");
-            displayEl.textContent = "";
-
-        }
-
-        function apagar() {
-            var displayEl = document.querySelector("#display").innerHTML;
-            document.querySelector('#display').innerHTML = displayEl.substring(0, displayEl.length - 1);
-
-        }
-
-        function insertPonto() {
-            var displayEl = document.querySelector('#display');
-            displayEl.textContent = displayEl.textContent + ".";
-
-        }
-
-        // FUNCTION OPERADORES ARITMÉTICOS  
-
-        function insertMais() {
-
-            var displayEl = document.querySelector('#display');
-            displayEl.textContent = displayEl.textContent + "+";
-
-        }
-        function insertMenos() {
-
-            var displayEl = document.querySelector('#display');
-            displayEl.textContent = displayEl.textContent + "-";
-
-        }
-        function insertDividir() {
-
-            var displayEl = document.querySelector('#display');
-            displayEl.textContent = displayEl.textContent + "/";
-
-        }
-        function insertVezes() {
-
-            var displayEl = document.querySelector('#display');
-            displayEl.textContent = displayEl.textContent + "*";
-
-        }
-
-        // FUNCTION DOS NUMEROS
-
-        function insert() {
-            var displayEl = document.querySelector("#display");
-            displayEl.textContent = displayEl.textContent + "0";
-        }
-        function insert1() {
-            var displayEl = document.querySelector("#display");
-            displayEl.textContent = displayEl.textContent + "1";
-        }
-        function insert2() {
-            var displayEl = document.querySelector("#display");
-            displayEl.textContent = displayEl.textContent + "2";
-        }
-        function insert3() {
-            var displayEl = document.querySelector("#display");
-            displayEl.textContent = displayEl.textContent + "3";
-        }
-        function insert4() {
-            var displayEl = document.querySelector("#display");
-            displayEl.textContent = displayEl.textContent + "4";
-        }
-        function insert5() {
-            var displayEl = document.querySelector("#display");
-            displayEl.textContent = displayEl.textContent + "5";
-        }
-        function insert6() {
-            var displayEl = document.querySelector("#display");
-            displayEl.textContent = displayEl.textContent + "6";
-        }
-        function insert7() {
-            var displayEl = document.querySelector("#display");
-            displayEl.textContent = displayEl.textContent + "7";
-        }
-        function insert8() {
-            var displayEl = document.querySelector("#display");
-            displayEl.textContent = displayEl.textContent + "8";
-        }
-        function insert9() {
-            var displayEl = document.querySelector("#display");
-            displayEl.textContent = displayEl.textContent + "9";
-        }
+        };
     }
+
+
+
 }
