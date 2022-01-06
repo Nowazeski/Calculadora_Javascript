@@ -164,8 +164,5 @@ class controller {
             var displayEl = document.querySelector("#display");
             displayEl.textContent = displayEl.textContent + "9";
         }
-
-
     }
-
 }
