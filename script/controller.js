@@ -4,16 +4,19 @@ class controller{
     constructor(){
         this.initialize();
     }
+
     initialize(){
 
         var valor = "0";
-        var numValor;
+        var numValor ="0";
         var novoNumero = true;
         var sinal;
 
         // Onload Inicia No carregamento da Pagina e inicia Referencias ao ID;
 
         onload = () =>{
+
+            // Referencias aos BTN
 
             document.querySelector('#bt0').onclick = ()=> digito(0);
             document.querySelector('#bt1').onclick = ()=> digito(1);
@@ -26,8 +29,12 @@ class controller{
             document.querySelector('#bt8').onclick = ()=> digito(8);
             document.querySelector('#bt9').onclick = ()=> digito(9);
 
+            // REFERENCIA AOS BT LIMPAR E APAGAR
+
             document.querySelector('#btLimpar').onclick = () => limpar();
             document.querySelector('#btApagar').onclick = () => apagar();
+
+            // REFERENCIA AOS OPERADORES ARITMÉTICOS
 
             document.querySelector("#btMais").onclick = () => mais();
             document.querySelector('#btMenos').onclick = () => menos();
@@ -84,7 +91,6 @@ class controller{
             }
         };
 
-
         // Operadores Aritméticos
 
         const mais = () =>{
@@ -122,43 +128,50 @@ class controller{
 
         const igual = () =>{
 
-            
-            
-            switch (sinal){
-
-                case 'mais':
-                var operacao = parseInt(numValor) + parseInt(valor); 
-                valor = operacao;
-                atualizaDisplay();
-                break;
-
-                case 'menos':
-                var operacao =  parseInt(numValor) - parseInt(valor);
-                valor = operacao;
-                atualizaDisplay();
-                break;
-
-                case 'dividir':
-                var operacao = parseInt(numValor) / parseInt(valor); 
-                valor = operacao;
-                atualizaDisplay();
-                break;
-
-                case 'vezes':
-                var operacao = parseInt(valor) * parseInt(numValor);
-                valor = operacao;
-                atualizaDisplay();
-                break;
-
-                default:
-                valor = "0";
+            // IF PARA TRATAMENTO DE ERRO NOT A NUMBER(NaN).
+  
+            if(valor == ""){
+                valor = "ERROR";
                 atualizaDisplay();
                 valor = "";
-            }
 
+                }else{
+
+                // LÓGICA DOS OPERADORES ARITMÉTICOS + - * /
+
+                    switch (sinal){
+                        
+                        
+                        case 'mais':
+                            var operacao = parseInt(numValor) + parseInt(valor); 
+                            valor = operacao;
+                            atualizaDisplay();
+                            break;
+                            
+                        case 'menos':
+                            var operacao =  parseInt(numValor) - parseInt(valor);
+                            valor = operacao;
+                            atualizaDisplay();
+                            break;
+                                
+                        case 'dividir':
+                            var operacao = parseInt(numValor) / parseInt(valor); 
+                            valor = operacao;
+                            atualizaDisplay();
+                            break;
+
+                        case 'vezes':
+                            var operacao = parseInt(valor) * parseInt(numValor);
+                            valor = operacao;
+                            atualizaDisplay();
+                            break;
+                                    
+                        default:
+                            valor = "0";
+                            atualizaDisplay();
+                            valor = "";
+                    }          
+                }
         };
     }
-
-
-
 }
