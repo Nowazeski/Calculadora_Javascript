@@ -28,6 +28,7 @@ class controller{
             document.querySelector('#bt7').onclick = ()=> digito(7);
             document.querySelector('#bt8').onclick = ()=> digito(8);
             document.querySelector('#bt9').onclick = ()=> digito(9);
+            document.querySelector('#btPonto').onclick = ()=> ponto();
 
             // REFERENCIA AOS BT LIMPAR E APAGAR
 
@@ -45,6 +46,16 @@ class controller{
 
             atualizaDisplay();
 
+        };
+
+        const ponto = () =>{
+          
+            if(novoNumero){
+                valor = '0,';
+                novoNumero = false;
+            } else if (valor.indexOf(',') == -1) valor += ',';
+            atualizaDisplay();
+            
         };
 
         // Insere Os Numeros No display;
